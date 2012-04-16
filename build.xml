@@ -82,6 +82,7 @@ Author: Neil Sanchala
       <classpath refid="classpath.path" />
       <compilerarg value="-Werror"/>  <!-- warnings become errors -->
       <compilerarg value="-Xlint:deprecation"/>
+      <compilerarg value="-Xlint:-options"/>
     </javac>
 
   </target>
