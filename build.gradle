@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+ant.importBuild 'build_javacc.xml'
+
+sourceCompatibility = 1.6
+version = '0.1.0'
+
+sourceSets {
+  main {
+    java {
+      srcDir 'java/src'
+      srcDir 'build/genfiles'
+    }
+  }
+  test {
+    java {
+      srcDir 'java/test'
+    }
+  }
+}
+
+mainClassName = "com.google.template.soy.SoyToJsSrcCompiler"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'org.apache.ant',            name: 'ant',                version: '1.8.2'
+  compile fileTree(dir: 'java/lib', include: '*.jar')
+}
+
+compileJava.dependsOn(compilejj)
